@@ -8,8 +8,8 @@
 
         <!-- Search-area -->
         <div class="search-area">
-            <input v-model="userSearch" @keyup="saveUserValue" type="text" placeholder="Ricerca un film">
-            <button @click.prevent="$emit('searchedFilm', userSearch)">Search</button>
+            <input v-model="userSearch" @keyup.enter="saveUserValue()" type="text" placeholder="Ricerca un film">
+            <button @click.prevent="saveUserValue()">Search</button>
 
         </div>
         
@@ -32,7 +32,8 @@ export default {
 
     methods:{
         saveUserValue(){
-            this.$emit('searchedFilm', this.userSearch)
+            this.$emit('searchedFilm', this.userSearch);
+            this.userSearch = ''
         }
 
     }

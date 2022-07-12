@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderComponent />
-    <MainComponent />
+    <HeaderComponent @searchedFilm= 'apiFilm' />
+    <MainComponent :infoFilm='userChoose' />
     
   </div>
 </template>
@@ -15,7 +15,28 @@ export default {
   components: {
     HeaderComponent,
     MainComponent,
+  },
+
+  data() {
+    return{
+      userChoose: '',
+
+    }
+  },
+
+  methods: {
+    apiFilm(result){
+      this.userChoose = result;
+
+    }
+
+  },
+
+  created() {
+    this.apiFilm;
   }
+
+  
 }
 </script>
 
