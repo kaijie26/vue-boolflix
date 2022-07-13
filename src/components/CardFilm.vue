@@ -1,26 +1,21 @@
 <!-- HTML -->
 <template>
-    <div>
-        <ul>
-            <li v-for="(film, index) in arrayFilm" :key="index" :infoFilm="film" class="card" >
-                <div>
-                    Titolo:{{ infoFilm.title }}
-                </div>
-                <div>
-                    Titolo Originale:{{ infoFilm.original_title }}
-                </div>
-                <div>
-                    Lingua:{{ infoFilm.spoken_languages }}
-                </div>
-                <div>
-                    Voto:{{ infoFilm.vote_count }}
-                </div>
+        <!-- Single Film -->
+        <li class="card" >
+            <div>
+                Titolo:{{ item.title }}
+            </div>
+            <div>
+                Titolo Originale:{{ item.original_title }}
+            </div>
+            <div>
+                Lingua:{{ item.spoken_languages }}
+            </div>
+            <div>
+                Voto:{{ item.vote_count }}
+            </div>
 
-            </li>
-
-        </ul>
-
-    </div>
+        </li>
 
 </template>
 
@@ -30,12 +25,25 @@
 export default {
     name: 'CardFilm',
     props: {
-        infoFilm: String
+        "item": Object
     },
     data(){
         return{
-            arrayFilm: []
+            
+            
         }
+    },
+
+    computed: {
+        
+    },
+
+    methods: {
+
+    },
+
+    created(){
+
     }
     
 }
@@ -43,5 +51,9 @@ export default {
 <!-- CSS -->
 
 <style lang="scss" scoped>
+li{
+    background-color: coral;
+    margin: 10px;
+}
 
 </style>

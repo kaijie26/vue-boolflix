@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 
 header{
-    background-color: pink;
+    background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
