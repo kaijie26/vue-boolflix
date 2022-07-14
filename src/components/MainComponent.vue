@@ -2,19 +2,25 @@
 <template>
     <main>
         <!-- FILM -->
-        <h2>Film</h2>
-        <ul>
-            <CardFilm v-for="(film) in infoFilm" :key="film.id" :item="film" />
+        <div class="film">
+            <h2>Film</h2>
+            <ul>
+                <CardFilm v-for="(film) in infoFilm" :key="film.id" :item="film" />
 
-        </ul>
-        
+            </ul>
+
+        </div>
+
         <!-- SERIE TV -->
-        <h2>Serie Tv</h2>
-        <ul>
-            <CardFilm v-for="(serie) in infoSeries" :key="serie.id" :item="serie" />
+        <div class="serie-tv">
+            <h2>Serie Tv</h2>
+            <ul>
+                <CardFilm v-for="(serie) in infoSeries" :key="serie.id" :item="serie" />
 
-            
-        </ul>
+                
+            </ul>
+
+        </div>
         
     </main>
 
@@ -41,9 +47,7 @@ export default {
 
     data(){
         return{
-            // arrayFilm:[],
-            // url: 'https://api.themoviedb.org/3/movie/550?api_key=553b5aa9ad4d3b90c09c3a4569be72aa',
-            // getResult: '',
+            
         }
 
     },
@@ -53,9 +57,21 @@ export default {
 
 <!-- CSS -->
 <style lang="scss" scoped>
+main{
+    background-color: #434343;
+    display: flex;
+    flex-direction: column;
+    
+}
+
 ul{
     display: flex;
     flex-wrap: wrap;
+}
+
+h2{
+    padding: 20px;
+    color: white;
 }
 
 </style>
