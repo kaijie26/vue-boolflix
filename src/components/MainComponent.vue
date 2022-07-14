@@ -1,12 +1,22 @@
 <!-- HTML -->
 <template>
-    <div class="container">
+    <main>
+        <!-- FILM -->
+        <h2>Film</h2>
         <ul>
-            <CardFilm v-for="(film, index) in infoFilm" :key="index" :item="film" />
+            <CardFilm v-for="(film) in infoFilm" :key="film.id" :item="film" />
 
         </ul>
         
-    </div>
+        <!-- SERIE TV -->
+        <h2>Serie Tv</h2>
+        <ul>
+            <CardFilm v-for="(serie) in infoSeries" :key="serie.id" :item="serie" />
+
+            
+        </ul>
+        
+    </main>
 
     
 </template>
@@ -24,6 +34,7 @@ export default {
 
     props: {
         "infoFilm": Array,
+        "infoSeries": Array,
         "searching": Boolean
 
     },

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent @searchedFilm="search"/>
-    <MainComponent :infoFilm="arrayFilm" :searching="searchStarted" />
+    <MainComponent :infoFilm="arrayFilm" :infoSeries="arraySeriesTv"  :searching="searchStarted" />
     
   </div>
 </template>
@@ -22,8 +22,9 @@ export default {
     return{
       userChoose: '',
       arrayFilm:[],
+      arraySeriesTv: [],
       allResults:[],
-      apiUrlFilm: 'https://api.themoviedb.org/3/search/',
+      apiUrl: 'https://api.themoviedb.org/3/search/',
       apiKey: '553b5aa9ad4d3b90c09c3a4569be72aa',
       getResult: '',
       searchStarted: false
@@ -38,9 +39,19 @@ export default {
     // Tutti i film nel l'api li metto dentro un array
     // Il risultato che cerca l'utente verrà tavolta mostrato nel array dei risultati che è relativo al array dei film
     getFilms(apiParams){
-      axios.get(this.apiUrlFilm + 'movie', apiParams).then((response) => {
+      axios.get(this.apiUrl + 'movie', apiParams).then((response) => {
         this.arrayFilm = response.data.results;
         this.allResults = this.arrayFilm;
+        this.searchStarted = true;
+
+      })
+
+    },
+
+    getSeriesTv(apiParams){
+      axios.get(this.apiUrl + 'tv', apiParams).then((response) => {
+        this.arraySeriesTv = response.data.results;
+        this.allResults = this.arraySeriesTv;
         this.searchStarted = true;
 
       })
@@ -54,26 +65,16 @@ export default {
         params: {
           api_key: this.apiKey,
           query: result,
+          language: 'it-IT'
           
         }
         
       };
-      console.log(paramsObject);
-
-      this.getFilms(paramsObject)
-
       
-      
+      // Chiama le API
+      this.getFilms(paramsObject),
+      this.getSeriesTv(paramsObject)
 
-      // this.getResult = `${this.url}${result}`,
-      // console.log(this.getResult);
-
-      // axios.get(this.getResult).then((response) => {
-      // this.arrayFilm = response.data.results
-      // console.log(this.arrayFilm);
-            
-           
-      // })
       
 
     }

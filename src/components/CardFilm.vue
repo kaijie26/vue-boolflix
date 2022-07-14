@@ -1,16 +1,19 @@
 <!-- HTML -->
 <template>
-        <!-- Single Film -->
+        <!-- Single Film and SerieTv -->
         <li class="card" >
             <div>
-                Titolo:{{ item.title }}
+                Titolo:{{ item.title? item.title : item.name }}
             </div>
             <div>
-                Titolo Originale:{{ item.original_title }}
+                Titolo Originale:{{ item.original_title? item.original_title : item.original_name }}
             </div>
-            <div>
-                Lingua:{{ item.spoken_languages }}
+            <div>Lingua:
+                <img v-if="flags.includes(item.original_language)" :src="require(`../assets/img/flag-${item.original_language}.png`)" class="flags" :alt="item.original_language" >
+                <span v-else>{{ item.original_language }}</span> 
+                
             </div>
+            
             <div>
                 Voto:{{ item.vote_count }}
             </div>
@@ -29,6 +32,7 @@ export default {
     },
     data(){
         return{
+            flags: ['it', 'en', 'fr']
             
             
         }
@@ -54,6 +58,10 @@ export default {
 li{
     background-color: coral;
     margin: 10px;
+}
+
+.flags{
+    width: 70px;
 }
 
 </style>
